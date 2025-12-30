@@ -1,5 +1,6 @@
 // app/product/[handle]/page.js
 import { shopifyFetch } from '@/../lib/shopify';
+import AddToCartButton from '@/app/components/AddToCartButton';
 import Image from 'next/image';
 
 async function getProductByHandle(handle) {
@@ -57,10 +58,11 @@ export default async function ProductPage(props) {
     const handle = params.handle;
 
     const product = await getProductByHandle(handle);
+    const getNumericId = (gid) => gid.split('/').pop();
     return (
-        <div>
+        <div className="container mx-auto p-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-4">
-               <div className="grid grid-cols-2">
+               <div className="grid grid-cols-2 gap-4">
                     {product.images.edges.map(({ node }, index ) => (
                         <Image
                             key={node.url}
@@ -70,14 +72,16 @@ export default async function ProductPage(props) {
                             height={400}
                             objectFit="contain"
                             className={`transition duration-500 ease-in-out hover:opacity-90 object-contain ${
-                            index === 0 ? 'col-span-full' : ''
+                            index === 0 ? 'col-span-full w-full' : ''
                             }`}
                         />
                     ))}
                </div>
                 <div className="p-5">
+                  <h1>{ getNumericId(product.variants.edges[0].node.id) }</h1>
                     <h1 className="text-3xl font-bold mb-4">{product.title}</h1>
                     <div dangerouslySetInnerHTML={{ __html: product.descriptionHtml }} />
+                    <AddToCartButton merchandiseId={ getNumericId(product.variants.edges[0].node.id) } />
                 </div>
             </div>
             {/* Render variants with Add to Cart buttons */}
