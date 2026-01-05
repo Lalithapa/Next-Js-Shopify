@@ -24,3 +24,14 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+.mySwiper .swiper-slide-thumb-active img {
+  transform: scale(0.95);
+}
+.mySwiper2 .swiper-slide-active {
+  outline: 2px solid rgba(0, 0, 0, 0.1);
+  outline-offset: -2px;
+}
+.swiper-slide-thumb-active {
+  border: 2px solid #000;
+  border-radius: 8px;
+}

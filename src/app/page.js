@@ -6,7 +6,7 @@ export default async function HomePage() {
   
   return (
     <div className='container mx-auto p-4'>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {products.edges.map(({ node }) => (
           <a key={node.id} href={`/product/${node.handle}`} className="p-4 block">
             <ProductCard product={node} />

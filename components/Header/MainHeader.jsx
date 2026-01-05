@@ -21,21 +21,21 @@ export default function Header() {
     // handleOpenCartModal();
   };
 
-  // Sticky menu
-  const handleStickyMenu = () => {
-    if (window.scrollY >= 80) {
-      setStickyMenu(true);
-    } else {
-      setStickyMenu(false);
-    }
-  };
+  // // Sticky menu
+  // const handleStickyMenu = () => {
+  //   if (window.scrollY >= 80) {
+  //     setStickyMenu(true);
+  //   } else {
+  //     setStickyMenu(false);
+  //   }
+  // };
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleStickyMenu);
-    return () => {
-      window.removeEventListener("scroll", handleStickyMenu);
-    };
-  }, []);
+  // useEffect(() => {
+  //   window.addEventListener("scroll", handleStickyMenu);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleStickyMenu);
+  //   };
+  // }, []);
 
   // Close mobile menu when screen size changes to desktop
   useEffect(() => {
@@ -52,7 +52,7 @@ export default function Header() {
   }, []);
   return (
     <header
-        className={`fixed left-0 top-0 w-full z-50 bg-white transition-all  ease-in-out duration-300 shadow-sm ${stickyMenu && "shadow-sm"
+        className={`relative left-0 top-0 w-full z-50 bg-white transition-all  ease-in-out duration-300 shadow-sm ${stickyMenu && "shadow-sm"
           }`}
       >
         {/* Topbar */}
@@ -61,7 +61,6 @@ export default function Header() {
             <div className="flex justify-between">
               <div className="hidden lg:block">
                 <p className="text-sm font-medium text-dark">
-                 dffgsdfgsfsdf
                     Get free delivery on orders over $100
                 </p>
               </div>
