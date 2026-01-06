@@ -3,32 +3,36 @@
 
 import { useState, useTransition } from "react";
 import { addToCartAction } from "@/app/actions/cart";
+import QuantitySelector from "../../../components/QuantitySelector";
+import { useCart } from "./CartProvider";
+import { toast } from "sonner";
 
 export default function AddToCartButton({ variantId, quantity = 1 }) {
   const [pending, startTransition] = useTransition();
   const [qty, setQty] = useState(quantity);
-
+  const { setCart } = useCart();
   const handleAdd = () => {
     startTransition(async () => {
       try {
         const cart = await addToCartAction({ variantId, quantity: qty });
+        setCart(cart); 
+        toast.success(`Added ✅ Cart qty: ${cart.totalQuantity}`);
         // Replace with your toast/cart drawer logic
-        alert(`Added ✅ Cart qty: ${cart.totalQuantity}`);
+        // alert(`Added ✅ Cart qty: ${cart.totalQuantity}`);
       } catch (e) {
         console.error(e);
-        alert("Add to cart failed");
+        toast.error("Add to cart failed");
       }
     });
   };
 
   return (
    <>
-    <input
-        type="number"
-        min="1"
+      <QuantitySelector
         value={qty}
-        onChange={(e) => setQty(e.target.value)}
-        style={{ width: 70 }}
+        onChange={(newQty) => {
+          setQty(newQty);
+        }}
       />
     <button
       onClick={handleAdd}

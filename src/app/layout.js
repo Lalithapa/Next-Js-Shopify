@@ -1,6 +1,9 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "../../components/Header/MainHeader";
+import Footer from "../../components/Footer/page";
+import { CartProvider } from "./components/CartProvider";
+import { Toaster } from "sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,8 +26,15 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Header />
-        {children}
+        <CartProvider>
+          <Header />
+          {children}
+          <Toaster position="top-center"
+            toastOptions={{
+              className: "text-center",
+            }} />
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   );

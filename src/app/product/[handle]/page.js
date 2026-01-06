@@ -59,7 +59,7 @@ export default async function ProductPage(props) {
 
   const product = await getProductByHandle(handle);
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto w-full max-w-7xl py-6 lg:py-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-4">
           <ProductGalleryClient
             images={product.images.edges.map(({ node }) => ({

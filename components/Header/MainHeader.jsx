@@ -5,20 +5,25 @@ import Link from "next/link";
 import { CartIcon, CloseIcon, HeartIcon, MenuIcon, UserIcon } from "./icons";
 import logo from "@/../public/hok_logo.webp"
 import { useEffect, useState } from "react";
-import { useCart } from "@/app/components/useCart";
+import CartDrawerModal from "../CartDrawerModal";
+import { useCart } from "@/app/components/CartProvider";
 
 export default function Header() {
   const [navigationOpen, setNavigationOpen] = useState(false);
   const [stickyMenu, setStickyMenu] = useState(false);
   const [searchModalOpen, setSearchModalOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
+  const handleOpenCartModal = () => setIsCartOpen(true);
+  const handleCloseCartModal = () => setIsCartOpen(false);
   // const { handleCartClick, cartCount, totalPrice } = useCart();
   // const wishlistCount = useAppSelector((state) => state.wishlistReducer).items
   //   ?.length;
-  const { cartCount, refreshCart } = useCart();
+  const { cart, cartCount, loading, refreshCart } = useCart();
 
   const onOpen = async () => {
     await refreshCart(); // fetch latest cart before opening drawer
-    // handleOpenCartModal();
+    handleOpenCartModal();
   };
 
   // // Sticky menu
@@ -30,12 +35,13 @@ export default function Header() {
   //   }
   // };
 
-  // useEffect(() => {
-  //   window.addEventListener("scroll", handleStickyMenu);
-  //   return () => {
-  //     window.removeEventListener("scroll", handleStickyMenu);
-  //   };
-  // }, []);
+  useEffect(() => {
+    refreshCart();
+    // window.addEventListener("scroll", handleStickyMenu);
+    // return () => {
+    //   window.removeEventListener("scroll", handleStickyMenu);
+    // };
+  }, [refreshCart]);
 
   // Close mobile menu when screen size changes to desktop
   useEffect(() => {
@@ -128,16 +134,16 @@ export default function Header() {
                 <UserIcon />
               </Link>
 
-              <Link
+              {/* <Link
                 href="/wishlist"
                 className="relative text-gray-700 transition hover:text-blue focus:outline-none"
                 aria-label="Wishlist"
               >
                 <HeartIcon />
                 <span className="absolute -top-1.5 -right-1.5 w-[18px] h-[18px] text-white bg-red-600 text-[10px] font-normal rounded-full inline-flex items-center justify-center">
-                  {/* {wishlistCount}  */}
- 10                </span>
-              </Link>
+                  {wishlistCount || 0}
+                </span>
+              </Link> */}
 
               <button
                 className="relative text-gray-700 transition hover:text-blue focus:outline-none"
@@ -146,8 +152,7 @@ export default function Header() {
               >
                 <CartIcon />
                 <span className="absolute -top-1.5 -right-1.5 w-[18px] h-[18px] text-white bg-red-600 text-[10px] font-normal rounded-full inline-flex items-center justify-center">
-                  {/* {cartCount || 0} */}
-                10
+                  { cartCount || 0} 
                 </span>
               </button>
 
@@ -159,6 +164,12 @@ export default function Header() {
               >
                 {navigationOpen ? <CloseIcon /> : <MenuIcon />}
               </button>
+              <CartDrawerModal
+                open={isCartOpen}
+                onClose={handleCloseCartModal}
+                cart={cart}
+                loading={loading}
+              />
             </div>
           </div>
         </div>

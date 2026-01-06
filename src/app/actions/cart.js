@@ -1,7 +1,7 @@
 // src/app/actions/cart.js
 "use server";
 
-import { cartCreate, cartLinesAdd } from "@/../lib/shopify";
+import { cartCreate, cartLinesAdd, cartLinesUpdate } from "@/../lib/shopify";
 import { getCartId, setCartId } from "../actions/cart-cookie";
 
 export async function addToCartAction({ variantId, quantity = 1 }) {
@@ -30,6 +30,27 @@ export async function addToCartAction({ variantId, quantity = 1 }) {
 
   if (!cart || (userErrors && userErrors.length)) {
     throw new Error(JSON.stringify(userErrors || "cartLinesAdd failed"));
+  }
+
+  return cart;
+}
+
+export async function updateCartLineQtyAction({ lineId, quantity }) {
+  const cartId = await getCartId();
+  if (!cartId) throw new Error("No cartId found");
+
+  const qty = Number(quantity); // keep min 1 (use 0 if you want remove)
+
+  const updated = await cartLinesUpdate({
+    cartId,
+    lines: [{ id: lineId, quantity: qty }],
+  });
+
+  const cart = updated?.cartLinesUpdate?.cart;
+  const userErrors = updated?.cartLinesUpdate?.userErrors;
+
+  if (!cart || (userErrors && userErrors.length)) {
+    throw new Error(JSON.stringify(userErrors || "cartLinesUpdate failed"));
   }
 
   return cart;
