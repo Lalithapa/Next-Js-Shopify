@@ -37,11 +37,21 @@ export default function Header() {
 
   useEffect(() => {
     refreshCart();
+    if (isCartOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    // cleanup on unmount
+    return () => {
+      document.body.style.overflow = "";
+    };
     // window.addEventListener("scroll", handleStickyMenu);
     // return () => {
     //   window.removeEventListener("scroll", handleStickyMenu);
     // };
-  }, [refreshCart]);
+  }, [refreshCart,isCartOpen]);
 
   // Close mobile menu when screen size changes to desktop
   useEffect(() => {

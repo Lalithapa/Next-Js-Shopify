@@ -27,7 +27,7 @@ export default function CartDrawerModal({
   }, [open, onClose]);
 
   if (!open) return null;
-
+  console.log(open, "Cart is Open");
   const lines = cart?.lines?.edges || [];
   const totalQty = cart?.totalQuantity ?? 0;
   const checkoutUrl = cart?.checkoutUrl;
