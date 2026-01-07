@@ -1,7 +1,6 @@
 // app/product/[handle]/page.js
 import { shopifyFetch } from '@/../lib/shopify';
-import AddToCartButton from '@/app/components/AddToCartButton';
-import ProductGalleryClient from './ProductGalleryClient';
+import ProductPage from './ProductPage';
 
 async function getProductByHandle(handle) {
   const query = `
@@ -10,20 +9,29 @@ async function getProductByHandle(handle) {
         id
         handle
         title
-        descriptionHtml
         vendor
         productType
-
-        images(first: 6) {
-          edges {
-            node {
-              id
-              url
-              altText
-            }
+        priceRange {
+          maxVariantPrice {
+            amount
+            currencyCode
+          }
+          minVariantPrice {
+            amount
+            currencyCode
           }
         }
-
+        descriptionHtml
+        selectedOrFirstAvailableVariant {
+          price {
+            amount
+            currencyCode
+          }
+          compareAtPrice {
+            amount
+            currencyCode
+          }
+        }
         variants(first: 10) {
           edges {
             node {
@@ -45,6 +53,15 @@ async function getProductByHandle(handle) {
             }
           }
         }
+        images(first: 20) {
+          edges {
+            node {
+              id
+              url
+              altText
+            }
+          }
+        }
       }
     }
   `;
@@ -53,28 +70,15 @@ async function getProductByHandle(handle) {
   return data.product;
 }
 
-export default async function ProductPage(props) {
+
+export default async function ProductData(props) {
   const params = await props.params; // ✅ unwrap params
   const handle = params.handle;
-
+  
   const product = await getProductByHandle(handle);
   return (
-    <div className="container mx-auto w-full max-w-7xl py-6 lg:py-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-4">
-          <ProductGalleryClient
-            images={product.images.edges.map(({ node }) => ({
-              url: node.url,
-              altText: node.altText || product.title,
-            }))}
-            title={product.title}
-          />
-        <div className="p-5">
-          <h1 className="text-3xl font-bold mb-4">{product.title}</h1>
-          <div dangerouslySetInnerHTML={{ __html: product.descriptionHtml }} />
-          <AddToCartButton variantId={product.variants.edges[0].node.id} />
-        </div>
-      </div>
-      {/* Render variants with Add to Cart buttons */}
-    </div>
+    <>
+     <ProductPage product={product} />
+    </>
   );
 }
