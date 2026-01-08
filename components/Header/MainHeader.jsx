@@ -82,13 +82,13 @@ export default function Header() {
               </div>
               <div className="flex divide-x divide-dark/20">
                 <Link
-                  href="/signup"
+                  href="/account"
                   className="pr-3 text-sm font-medium text-dark transition hover:text-blue-300"
                 >
                   Create an account
                 </Link>
                 <Link
-                  href="#"
+                  href="/account"
                   className="pl-3 text-sm font-medium text-dark transition hover:text-blue-300"
                 >
                   {"Sign In"}

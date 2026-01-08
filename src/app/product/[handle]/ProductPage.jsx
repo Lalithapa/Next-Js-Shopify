@@ -13,10 +13,10 @@ import {
 import { useState } from 'react';
 
 export default function ProductPage({ product }) {
-   
-    const price = Number(product?.selectedOrFirstAvailableVariant?.price?.amount || 0);
-    const compareAt = Number(product?.selectedOrFirstAvailableVariant?.compareAtPrice?.amount || 0);
-    const currency = product?.selectedOrFirstAvailableVariant?.price?.currencyCode || "INR";
+    const firstVariant = product?.selectedOrFirstAvailableVariant;
+    const price = Number(firstVariant?.price?.amount || 0);
+    const compareAt = Number(firstVariant?.compareAtPrice?.amount || 0);
+    const currency = firstVariant?.price?.currencyCode || "₹";
   
     const hasDiscount = compareAt > price && price > 0;
 
@@ -34,7 +34,7 @@ export default function ProductPage({ product }) {
     }).format(amount);
 
     return (
-         <section className="w-full bg-white">
+      <section className="w-full bg-white">
       <div className="container mx-auto w-full max-w-7xl py-6 lg:py-8">
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
           {/* Left: Gallery */}

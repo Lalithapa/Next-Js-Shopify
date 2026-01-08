@@ -19,15 +19,28 @@ export default function QuantitySelector({
   };
 
   return (
-    <div className="inline-flex items-center border rounded-full overflow-hidden h-9">
+    <div className="inline-flex items-center border rounded-md overflow-hidden h-11">
       <button
         type="button"
         onClick={decrease}
         disabled={value <= min}
         aria-label="Decrease quantity"
-        className={`w-9 h-9 text-lg flex items-center justify-center transition ${
-          value <= min ? "opacity-40 cursor-not-allowed" : "hover:bg-gray-100"
-        }`}
+        className={`w-6
+      h-full
+      flex
+      items-center
+      justify-center
+      text-lg
+      font-medium
+      text-neutral-700
+      transition
+      hover:bg-neutral-100
+      active:bg-neutral-200
+      disabled:opacity-40
+      disabled:cursor-not-allowed
+      disabled:active:bg-transparent
+ ${value <= min ? "opacity-40 cursor-not-allowed" : "hover:bg-gray-100"
+          }`}
       >
         −
       </button>
@@ -38,14 +51,36 @@ export default function QuantitySelector({
         value={value}
         readOnly={true}
         onChange={handleInput}
-        className="w-10 text-center text-sm outline-none border-x"
+        name="quantity"
+        aria-label="Quantity"
+        className="w-12
+      h-full
+      text-center
+      text-sm
+      font-medium
+      text-neutral-900
+      border-x
+      border-neutral-300
+      outline-none
+      bg-white
+      select-none"
       />
 
       <button
         type="button"
         onClick={increase}
         aria-label="Increase quantity"
-        className="w-9 h-9 text-lg flex items-center justify-center hover:bg-gray-100 transition"
+        className="w-6
+      h-full
+      flex
+      items-center
+      justify-center
+      text-lg
+      font-medium
+      text-neutral-700
+      transition
+      hover:bg-neutral-100
+      active:bg-neutral-200"
       >
         +
       </button>
