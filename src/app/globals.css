@@ -126,6 +126,9 @@
     @apply bg-background text-foreground;
   }
 }
+body{
+  font-family: 'Geist';
+}
 
 /* Swiper Slider Code */
 .swiper {
@@ -135,8 +138,7 @@
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: #444;
-
+  background: inherit;
   /* Center slide text vertically */
   display: flex;
   justify-content: center;

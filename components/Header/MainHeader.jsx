@@ -73,7 +73,7 @@ export default function Header() {
       >
         {/* Topbar */}
         <div className="bg-white py-2.5">
-          <div className="px-4 mx-auto max-w-7xl sm:px-6 xl:px-0">
+          <div className="container px-4 mx-auto sm:px-6 xl:px-0">
             <div className="flex justify-between">
               <div className="hidden lg:block">
                 <p className="text-sm font-medium text-dark">
@@ -99,7 +99,7 @@ export default function Header() {
         </div>
 
         {/* Main Header */}
-        <div className="px-4 mx-auto max-w-7xl sm:px-6 xl:px-0">
+        <div className="container px-4 mx-auto sm:px-6 xl:px-0">
           <div className="flex items-center justify-between py-4 xl:py-0">
             {/* Logo */}
             <div>

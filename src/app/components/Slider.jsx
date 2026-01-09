@@ -22,7 +22,25 @@ export default function Slider({config}) {
         config?.features?.navigation && Navigation,
     ].filter(Boolean);
     return (
-        <>
+        <>  
+            {
+                config?.title && (
+                <div>
+                    <p className="
+                    text-[#212529]
+                    font-extrabold
+                    text-[22px]
+                    mb-6
+                    whitespace-nowrap
+                    uppercase
+                    md:text-[32px]
+                    md:leading-9
+                    ">
+                    {config?.title}
+                    </p>
+                </div>
+                )
+            }
             <Swiper
                 id={config.id}
                 {...config.swiper}
@@ -49,6 +67,7 @@ export default function Slider({config}) {
                                         )}
                                         <Image src={elem?.images?.desktop} width={1920} height={700} alt={elem?.alt} className="w-full h-auto bg-white object-cover" ></Image>
                                     </picture>
+                                    <p className='text-[12px] md:text-[18px] mt-1.5'>{elem?.title}</p>
                                 </Link>
                             </SwiperSlide>
                         )

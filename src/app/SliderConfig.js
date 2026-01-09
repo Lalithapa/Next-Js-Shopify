@@ -10,7 +10,10 @@ export const heroSliderConfig = {
             delay: 25000,
             disableOnInteraction: false,
         },
-        pagination: { clickable: true },
+        pagination:{
+          clickable: true,
+          dynamicBullets: true,
+        },
         navigation: true,
     },
     features: {
@@ -60,29 +63,29 @@ export const categoriesSlideConfig = {
     swiper: {
         slidesPerView: 2.5,
         spaceBetween: 12,
+        navigation: true,
         breakpoints: {
             640: {
                 slidesPerView: 2.5,
-                spaceBetween: 20,
             },
             768: {
                 slidesPerView: 4.5,
-                spaceBetween: 40,
             },
             1024: {
                 slidesPerView: 6.5,
-                spaceBetween: 50,
+                spaceBetween: 16,
             },
         },
     },
     features: {
         autoplay: false,
         pagination: false,
-        navigation: false,
+        navigation: true,
     },
     slides: [
         {
             url: "https://hokmakeup.com/collections/product-without-clearance",
+            title:"Sale is Live",
             images: {
                 desktop:
                     "https://hokmakeup.com/cdn/shop/files/1_dd8c52f8-9305-42c5-a606-37f1bd2fa3ff.png?v=1766232036&width=1920",
@@ -93,6 +96,7 @@ export const categoriesSlideConfig = {
         },
         {
             url: "https://hokmakeup.com/collections/product-without-clearance",
+            title:"Best Seller",
             images: {
                 desktop:
                     "https://hokmakeup.com/cdn/shop/files/2_227d061c-34e6-43b1-8cb7-506b02ba5344.png?v=1766232040&width=1920",
@@ -102,6 +106,7 @@ export const categoriesSlideConfig = {
         },
         {
             url: "https://hokmakeup.com/collections/product-without-clearance",
+            title:"Makeup",
             images: {
 
                 desktop:
@@ -113,6 +118,7 @@ export const categoriesSlideConfig = {
         },
         {
             url: "https://hokmakeup.com/collections/product-without-clearance",
+            title:"Combos & Kits",
             images: {
 
                 desktop:
@@ -124,6 +130,7 @@ export const categoriesSlideConfig = {
         },
         {
             url: "https://hokmakeup.com/collections/product-without-clearance",
+            title:"Skin",
             images: {
 
                 desktop:
@@ -135,6 +142,7 @@ export const categoriesSlideConfig = {
         },
         {
             url: "https://hokmakeup.com/collections/product-without-clearance",
+            title:"Bath & Body",
             images: {
 
                 desktop:
@@ -146,6 +154,7 @@ export const categoriesSlideConfig = {
         },
         {
             url: "https://hokmakeup.com/collections/product-without-clearance",
+            title:"Hair",
             images: {
 
                 desktop:
@@ -157,6 +166,7 @@ export const categoriesSlideConfig = {
         },
         {
             url: "https://hokmakeup.com/collections/product-without-clearance",
+            title:"Fragrance",
             images: {
 
                 desktop:
@@ -168,6 +178,7 @@ export const categoriesSlideConfig = {
         },
         {
             url: "https://hokmakeup.com/collections/product-without-clearance",
+            title:"Organizers",
             images: {
 
                 desktop:
@@ -182,10 +193,12 @@ export const categoriesSlideConfig = {
 
 export const topPicksSlideConfig = {
     id: "topPicks-sliders",
+    title:"Top Picks",
     className: "topPicksSlideConfig",
     swiper: {
         slidesPerView: 2.1,
         spaceBetween: 12,
+        navigation: true,
         breakpoints: {
             640: {
                 slidesPerView: 2.1,
@@ -209,25 +222,28 @@ export const topPicksSlideConfig = {
     slides: [
         {
             url: "https://hokmakeup.com/collections/product-without-clearance",
+            title:"Foundation",
             images: {
                 desktop:
                     "https://hokmakeup.com/cdn/shop/files/Flawless_Foundations.jpg?v=1766232361",
                 mobile:
                     "",
             },
-            alt: "Sweetons Banner",
+            alt: "Foundation",
         },
         {
             url: "https://hokmakeup.com/collections/product-without-clearance",
+            title:"Lip Tint",
             images: {
                 desktop:
                     "https://hokmakeup.com/cdn/shop/files/Tinted_Lips.jpg?v=1766232362",
                 mobile: "",
             },
-            alt: "Best Sellers",
+            alt: "Lip Tint",
         },
         {
             url: "https://hokmakeup.com/collections/product-without-clearance",
+            title:"Eyeshadow",
             images: {
 
                 desktop:
@@ -235,10 +251,11 @@ export const topPicksSlideConfig = {
                 mobile:
                     "",
             },
-            alt: "Makeup",
+            alt: "Eyeshadow",
         },
         {
             url: "https://hokmakeup.com/collections/product-without-clearance",
+            title:"Blush",
             images: {
 
                 desktop:
@@ -246,10 +263,11 @@ export const topPicksSlideConfig = {
                 mobile:
                     "",
             },
-            alt: "Combos & Kits",
+            alt: "Blush",
         },
         {
             url: "https://hokmakeup.com/collections/product-without-clearance",
+            title:"Setting Spray",
             images: {
 
                 desktop:
@@ -257,10 +275,11 @@ export const topPicksSlideConfig = {
                 mobile:
                     "",
             },
-            alt: "Skin",
+            alt: "Setting Spray",
         },
         {
             url: "https://hokmakeup.com/collections/product-without-clearance",
+            title:"Lipstick",
             images: {
 
                 desktop:
@@ -268,10 +287,11 @@ export const topPicksSlideConfig = {
                 mobile:
                     "",
             },
-            alt: "Bath & Body",
+            alt: "Lipstick",
         },
         {
             url: "https://hokmakeup.com/collections/product-without-clearance",
+            title:"Mascara",
             images: {
 
                 desktop:
@@ -279,10 +299,11 @@ export const topPicksSlideConfig = {
                 mobile:
                     "",
             },
-            alt: "Hair",
+            alt: "Mascara",
         },
         {
             url: "https://hokmakeup.com/collections/product-without-clearance",
+            title:"Kajal",
             images: {
 
                 desktop:
@@ -290,7 +311,7 @@ export const topPicksSlideConfig = {
                 mobile:
                     "",
             },
-            alt: "Fragrance",
+            alt: "Kajal",
         }
     ]
 }
