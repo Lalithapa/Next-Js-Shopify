@@ -1,4 +1,5 @@
 import Card from "./components/Card";
+import { SimpleLogoBlock } from "./components/creative-sections/blocks/simple-logo-block";
 import Slider from "./components/Slider";
 import { categoriesSlideConfig, heroSliderConfig, topPicksSlideConfig } from "./SliderConfig";
 
@@ -16,6 +17,7 @@ export default async function HomePage() {
       </div>
       <div className='container mx-auto w-full py-6 lg:py-8'>
         <Card></Card>
+        <SimpleLogoBlock />
       </div>
     </div>
     </>

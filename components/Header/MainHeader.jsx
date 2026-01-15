@@ -7,8 +7,9 @@ import logo from "@/../public/hok_logo.webp"
 import { useEffect, useState } from "react";
 import CartDrawerModal from "../CartDrawerModal";
 import { useCart } from "@/app/components/CartProvider";
+import NavMenu from "@/app/components/NavMenu";
 
-export default function Header() {
+export default function Header({ navItems }) {
   const [navigationOpen, setNavigationOpen] = useState(false);
   const [stickyMenu, setStickyMenu] = useState(false);
   const [searchModalOpen, setSearchModalOpen] = useState(false);
@@ -183,6 +184,7 @@ export default function Header() {
             </div>
           </div>
         </div>
+        <NavMenu items={navItems} />
       </header>
   );
 }

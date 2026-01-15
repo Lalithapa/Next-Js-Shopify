@@ -4,9 +4,9 @@ import Link from 'next/link';
 
 const ProductCard = ({ product }) => {
     const firstVariant = product?.selectedOrFirstAvailableVariant;
-    const price = Number(firstVariant.price?.amount || 0);
-    const compareAt = Number(firstVariant.compareAtPrice?.amount || 0);
-    const currency = firstVariant.price?.currencyCode || "₹";
+    const price = Number(firstVariant?.price?.amount || 0);
+    const compareAt = Number(firstVariant?.compareAtPrice?.amount || 0);
+    const currency = firstVariant?.price?.currencyCode || "₹";
   
     const hasDiscount = compareAt > price && price > 0;
 

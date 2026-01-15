@@ -76,6 +76,7 @@ export default async function ProductData(props) {
   const handle = params.handle;
   
   const product = await getProductByHandle(handle);
+  console.log(product, "product Data");
   return (
     <>
      <ProductPage product={product} />

@@ -20,9 +20,6 @@ export default function Footer() {
                 </Link>
                 <ul className="list-none footer-links">
                 <li className="mb-2">
-                    <Link href="#" className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Cool stuff</Link>
-                </li>
-                <li className="mb-2">
                     <Link href="#" className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Random feature</Link>
                 </li>
                 <li className="mb-2">
